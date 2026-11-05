@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodShare - Food Donation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #198754;
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(
+                rgba(0,0,0,0.55),
+                rgba(0,0,0,0.55)
+            ),
+            url("https://images.unsplash.com/photo-1547592180-85f173990554?w=1600");
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background-color: #ffc107;
+            color: #222;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #198754;
+            margin-bottom: 25px;
+            font-size: 32px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            width: 280px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #198754;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        .donate {
+            background-color: #e8f5e9;
+        }
+
+        form {
+            max-width: 450px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input, textarea, select {
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            background-color: #198754;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #146c43;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media(max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            nav a {
+                margin: 8px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🍲 FoodShare</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#donate">Donate</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h2>Share Food, Spread Happiness</h2>
+        <p>Don't waste food. Help someone who needs it.</p>
+        <a href="#donate" class="btn">Donate Food Now</a>
+    </section>
+
+    <section class="section" id="about">
+        <h2>About FoodShare</h2>
+        <p>
+            FoodShare is a food donation initiative that connects
+            food donors with needy people. Our mission is to reduce
+            food waste and fight hunger in our community.
+        </p>
+    </section>
+
+    <section class="section" id="services">
+        <h2>What We Do</h2>
+
+        <div class="cards">
+            <div class="card">
+                <h3>🍱 Food Collection</h3>
+                <p>We collect surplus food from homes, restaurants
+                and events.</p>
+            </div>
+
+            <div class="card">
+                <h3>🤝 Food Distribution</h3>
+                <p>We distribute collected food to people in need
+                and local communities.</p>
+            </div>
+
+            <div class="card">
+                <h3>❤️ Reduce Food Waste</h3>
+                <p>We encourage people to donate extra food instead
+                of throwing it away.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section donate" id="donate">
+        <h2>Donate Food</h2>
+        <p style="margin-bottom:25px;">
+            Fill out the form to register your food donation.
+        </p>
+
+        <form onsubmit="donateFood(event)">
+            <input type="text" id="name"
+                placeholder="Your Name" required>
+
+            <input type="email" id="email"
+                placeholder="Your Email" required>
+
+            <select id="foodType" required>
+                <option value="">Select Food Type</option>
+                <option>Cooked Food</option>
+                <option>Fresh Vegetables</option>
+                <option>Fruits</option>
+                <option>Packaged Food</option>
+                <option>Groceries</option>
+            </select>
+
+            <input type="number" id="quantity"
+                placeholder="Food Quantity (in kg)" min="1" required>
+
+            <textarea id="address"
+                placeholder="Your Address" rows="4" required></textarea>
+
+            <button type="submit">Submit Donation</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2026 FoodShare | Share Food, Save Lives ❤️</p>
+        <p>Contact: foodshare@example.com</p>
+    </footer>
+
+    <script>
+        function donateFood(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+
+            alert("Thank you " + name +
+                  "! Your donation form has been submitted successfully.");
+
+            event.target.reset();
+        }
+    </script>
+
+</body>
+</html>
